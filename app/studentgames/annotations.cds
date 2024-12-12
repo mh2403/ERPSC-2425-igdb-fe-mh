@@ -27,8 +27,8 @@ annotate service.Student with @(
     UI.HeaderInfo : {
         TypeName : 'Student',
         TypeNamePlural : 'Students',
-        Title : {Value : 'Maak hier een nieuwe student aan'},
-        Description : {Value : 'Vul de informatie in om een nieuwe student toe te voegen.'}
+        Title : {Value : 'Student Page'},
+        Description : {Value : 'Hier vind je de student details en zijn/haar games.'}
     },
     UI.FieldGroup#GeneratedGroup1 : {
         $Type : 'UI.FieldGroupType',
@@ -54,7 +54,7 @@ annotate service.Student with @(
         {
             $Type : 'UI.ReferenceFacet',
             ID : 'GeneralInfo',
-            Label : 'General Information',
+            Label : 'Student Information',
             Target : '@UI.FieldGroup#GeneratedGroup1'
         }
     ]
