@@ -18,9 +18,9 @@ annotate service.Student with @(
             Value : Last_name
         }
     ],
-    UI.CreateHidden : false, // Create knop zichtbaar
-    UI.UpdateHidden : false, // Edit knop zichtbaar
-    UI.DeleteHidden : false  // Delete knop zichtbaar
+    UI.CreateHidden : false,
+    UI.UpdateHidden : false,
+    UI.DeleteHidden : false
 );
 
 annotate service.Student with @(
@@ -56,6 +56,56 @@ annotate service.Student with @(
             ID : 'GeneralInfo',
             Label : 'Student Information',
             Target : '@UI.FieldGroup#GeneratedGroup1'
+        },
+        {
+            $Type : 'UI.ReferenceFacet',
+            ID : 'FavoriteGames',
+            Label : 'Favorite Games',
+            Target : 'to_favos/@UI.LineItem' // Correct pad naar de annotatie
         }
     ]
+);
+
+annotate service.FavoriteGame with @(
+    UI.LineItem : [
+        {
+            $Type : 'UI.DataField',
+            Label : 'Game Name',
+            Value : to_game.Name
+        },
+        {
+            $Type : 'UI.DataField',
+            Label : 'Genre',
+            Value : to_game.Genre
+        },
+        {
+            $Type : 'UI.DataField',
+            Label : 'Publisher',
+            Value : to_game.Publisher
+        }
+    ],
+    UI.SelectionFields : [
+        Game_ID, // Zorg dat Game_ID hier beschikbaar is voor selectie
+        to_game.Name
+    ],
+    UI.FieldGroup#GeneralInfo : {
+        $Type : 'UI.FieldGroupType',
+        Data : [
+            {
+                $Type : 'UI.DataField',
+                Label : 'Game ID',
+                Value : Game_ID
+            },
+            {
+                $Type : 'UI.DataField',
+                Label : 'Game Name',
+                Value : to_game.Name
+            },
+            {
+                $Type : 'UI.DataField',
+                Label : 'Genre',
+                Value : to_game.Genre
+            }
+        ]
+    }
 );
